@@ -21,7 +21,7 @@ public:
 
 public slots:
 
-    void update(int);
+    void updateTextEdit(float temperature, float humidity, float pressure);
 
     void on_checkBox_stateChanged(int arg1);
 
@@ -39,10 +39,10 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
-     // указатель на поток
-    QThread *pThread;
-    // указатель на поток класса iec60870
-    Iec60870 *pIec60870;
+     // объект на поток
+    QThread ThreadIec60870;
+    // объект на поток класса iec60870
+    Iec60870 iec60870;
 
 };
 #endif // MAINWINDOW_H

@@ -22,6 +22,14 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //как только поток стартует то запускается метод run  из класса Iec60870
+    connect(&ThreadIec60870, &QThread::started, &iec60870, &Iec60870::run);
+    //если вызвался сигнал emitStop, то поток завершается
+    connect(&iec60870, &Iec60870::emitStop, &ThreadIec60870, &QThread::terminate);
+    // передать объект в поток
+    iec60870.moveToThread(&ThreadIec60870);
+
 }
 
 MainWindow::~MainWindow()
@@ -44,25 +52,27 @@ void MainWindow::on_checkBox_2_stateChanged(int arg1)
     qInfo() << "нажали 2:"  << arg1;
 }
 
-void MainWindow::update(int num)
+void MainWindow::updateTextEdit(float temperature, float humidity, float pressure)
 {
-    ui->textEdit->insertPlainText(QString::number(num));
+    QString string = QString::number(temperature) + QString::number(humidity) + QString::number(pressure) + "\n";
+    ui->textEdit->insertPlainText(string);
 }
+
 
 //вкл
 void MainWindow::on_pushButton_3_clicked()
 {
     //ui->textEdit->insertPlainText("добавил текст\n");
-    //выделяем динпамять для потока протокола iec60870
-    pThread = new QThread;
-    pIec60870 = new Iec60870;
-    //операция перемещения объекта в поток pThread
-    pIec60870->moveToThread(pThread);
-    connect(pIec60870, SIGNAL(emitRun(int)), this, SLOT(update(int)));
-    // когда поток стартует то запускается функция run
-    connect(pThread, SIGNAL(started()), pIec60870, SLOT(run()));
-    //запускаем поток
-    pThread->start();
+
+    //чтобы выполнялся цикл
+    iec60870.setRunning(true);
+
+    //запустить поток
+    ThreadIec60870.start();
+
+    //при вызове сигнала emitSendData данные выводятся в gui через метод updateTextEdit
+    connect(&iec60870, SIGNAL(emitSendData(float, float, float)), this, SLOT(updateTextEdit(float, float, float)));
+
 
 
 
@@ -73,7 +83,13 @@ void MainWindow::on_pushButton_3_clicked()
 //выкл
 void MainWindow::on_pushButton_6_clicked()
 {
-    on_pushButton_3_clicked();
+    //чтобы остановился цикл
+    iec60870.setRunning(false);
+
+    //отключает соеденение с сигнала emitSendData и данных которые выводятся в gui через метод updateTextEdit
+    disconnect(&iec60870, SIGNAL(emitSendData(float, float, float)), this, SLOT(updateTextEdit(float, float, float)));
+
+
 }
 
 
