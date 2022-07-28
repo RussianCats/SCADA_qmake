@@ -31,23 +31,23 @@
         <property name="title">
          <string>iec61850</string>
         </property>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="pushButton_7">
          <property name="geometry">
           <rect>
-           <x>200</x>
+           <x>250</x>
            <y>40</y>
            <width>121</width>
            <height>41</height>
           </rect>
          </property>
          <property name="text">
-          <string>вкл/выкл</string>
+          <string>выкл</string>
          </property>
         </widget>
-        <widget class="QCheckBox" name="checkBox_3">
+        <widget class="QCheckBox" name="checkBox_4">
          <property name="geometry">
           <rect>
-           <x>60</x>
+           <x>10</x>
            <y>60</y>
            <width>92</width>
            <height>24</height>
@@ -57,10 +57,10 @@
           <string>полив</string>
          </property>
         </widget>
-        <widget class="QCheckBox" name="checkBox_4">
+        <widget class="QCheckBox" name="checkBox_3">
          <property name="geometry">
           <rect>
-           <x>60</x>
+           <x>10</x>
            <y>30</y>
            <width>92</width>
            <height>24</height>
@@ -68,6 +68,19 @@
          </property>
          <property name="text">
           <string>шторка</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>40</y>
+           <width>121</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>вкл</string>
          </property>
         </widget>
        </widget>
@@ -84,7 +97,6 @@
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;здесь будут данные с iec&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
@@ -103,20 +115,20 @@ hr { height: 1px; border-width: 0; }
         <widget class="QPushButton" name="pushButton_3">
          <property name="geometry">
           <rect>
-           <x>190</x>
+           <x>120</x>
            <y>40</y>
            <width>121</width>
            <height>41</height>
           </rect>
          </property>
          <property name="text">
-          <string>вкл/выкл</string>
+          <string>вкл</string>
          </property>
         </widget>
         <widget class="QCheckBox" name="checkBox">
          <property name="geometry">
           <rect>
-           <x>50</x>
+           <x>20</x>
            <y>30</y>
            <width>92</width>
            <height>24</height>
@@ -129,7 +141,7 @@ hr { height: 1px; border-width: 0; }
         <widget class="QCheckBox" name="checkBox_2">
          <property name="geometry">
           <rect>
-           <x>50</x>
+           <x>20</x>
            <y>60</y>
            <width>92</width>
            <height>24</height>
@@ -137,6 +149,19 @@ hr { height: 1px; border-width: 0; }
          </property>
          <property name="text">
           <string>полив</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>40</y>
+           <width>121</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>выкл</string>
          </property>
         </widget>
        </widget>
@@ -159,36 +184,23 @@ hr { height: 1px; border-width: 0; }
         <property name="title">
          <string>opc ua</string>
         </property>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="pushButton_8">
          <property name="geometry">
           <rect>
-           <x>190</x>
+           <x>250</x>
            <y>40</y>
            <width>121</width>
            <height>41</height>
           </rect>
          </property>
          <property name="text">
-          <string>вкл/выкл</string>
+          <string>выкл</string>
          </property>
         </widget>
         <widget class="QCheckBox" name="checkBox_5">
          <property name="geometry">
           <rect>
-           <x>50</x>
-           <y>60</y>
-           <width>92</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>полив</string>
-         </property>
-        </widget>
-        <widget class="QCheckBox" name="checkBox_6">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
+           <x>10</x>
            <y>30</y>
            <width>92</width>
            <height>24</height>
@@ -196,6 +208,32 @@ hr { height: 1px; border-width: 0; }
          </property>
          <property name="text">
           <string>шторка</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>40</y>
+           <width>121</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>вкл</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="checkBox_6">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>92</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>полив</string>
          </property>
         </widget>
        </widget>

@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QThread>
+#include <iec60870.h>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,8 +18,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
 
+public slots:
+
+    void update(int);
 
     void on_checkBox_stateChanged(int arg1);
 
@@ -24,19 +29,20 @@ private slots:
 
     void on_pushButton_3_clicked();
 
-    void on_checkBox_4_stateChanged(int arg1);
 
-    void on_checkBox_3_stateChanged(int arg1);
 
-    void on_pushButton_4_clicked();
+    void on_pushButton_6_clicked();
 
-    void on_checkBox_6_stateChanged(int arg1);
 
-    void on_checkBox_5_stateChanged(int arg1);
 
-    void on_pushButton_5_clicked();
+
 
 private:
     Ui::MainWindow *ui;
+     // указатель на поток
+    QThread *pThread;
+    // указатель на поток класса iec60870
+    Iec60870 *pIec60870;
+
 };
 #endif // MAINWINDOW_H
