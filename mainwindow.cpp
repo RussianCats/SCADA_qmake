@@ -4,16 +4,6 @@
 
 #include<QDebug>
 
-//// для сокетов
-//#include <netinet/in.h> //structure for storing address information
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <sys/socket.h> //for socket APIs
-//#include <sys/types.h>
-//#include <cmath>
-//#include <string.h>
-//#define SIZE 255
-//#define QUANTITY_TRANSFER 96 * 3
 
 
 
@@ -40,7 +30,8 @@ MainWindow::~MainWindow()
 
 
 
-// iec60870-5-104
+ /*----------------------------------------------------// iec60870-5-104 //-----------------------------------------------------*/
+
 void MainWindow::on_checkBox_stateChanged(int arg1)
 {
    qInfo() << "нажали 1:" << arg1;
@@ -54,7 +45,7 @@ void MainWindow::on_checkBox_2_stateChanged(int arg1)
 
 void MainWindow::updateTextEdit(float temperature, float humidity, float pressure)
 {
-    QString string = QString::number(temperature) + QString::number(humidity) + QString::number(pressure) + "\n";
+    QString string = QString::number(temperature) + "\t" + QString::number(humidity) + "\t" + QString::number(pressure) + "\n";
     ui->textEdit->insertPlainText(string);
 }
 
@@ -70,12 +61,11 @@ void MainWindow::on_pushButton_3_clicked()
     //запустить поток
     ThreadIec60870.start();
 
+    //начальный текст
+    ui->textEdit->insertPlainText("temperature\thumidity\tpressure\n");
+
     //при вызове сигнала emitSendData данные выводятся в gui через метод updateTextEdit
     connect(&iec60870, SIGNAL(emitSendData(float, float, float)), this, SLOT(updateTextEdit(float, float, float)));
-
-
-
-
 
 }
 
@@ -91,6 +81,8 @@ void MainWindow::on_pushButton_6_clicked()
 
 
 }
+
+/*------------------------------------------------------------------------------------------------------------*/
 
 
 
